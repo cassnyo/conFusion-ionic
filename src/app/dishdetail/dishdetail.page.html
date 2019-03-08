@@ -1,0 +1,64 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Dish detail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <!-- details -->
+  <ion-card *ngIf="dish">
+    <img src="{{baseUrl + dish.image}}"/>
+    <ion-card-content>
+      <ion-card-title>{{ dish.name }}</ion-card-title>
+      <p>{{ dish.description }}</p>
+    </ion-card-content>
+    <ion-row>
+      <ion-col>
+        <!-- rate button -->
+        <ion-button fill="clear" size="small">
+          <ion-icon slot="start" name="star"></ion-icon>
+          {{ averageStarts }} stars
+        </ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button fill="clear" size="small">
+          <ion-icon slot="start" name="text"></ion-icon>
+          {{ commentsCount }} comments
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-card>
+
+  <!-- comments -->
+  <ion-list *ngIf="dish">
+    <ion-list-header>
+      <h4>Comments</h4>
+    </ion-list-header>
+    <ion-item *ngFor="let comment of dish.comments">
+
+      <ion-label text-wrap>
+        <ion-text>{{ comment.comment }}</ion-text>
+        <p>{{ comment.rating }} stars</p>
+        <p><span> -- {{comment.author }} {{ comment.date | date }}</span></p>
+      </ion-label>
+
+    </ion-item>
+  </ion-list>
+
+  <!-- loading -->
+  <div [hidden]="dish || dishErrorMessage">
+    <ion-spinner></ion-spinner>
+    <h4>Loading... Please wait</h4>
+  </div>
+
+  <!-- error -->
+  <div *ngIf="dishErrorMessage">
+    <h2>Error</h2>
+    <h4>{{ dishErrorMessage }}</h4>
+  </div>
+
+</ion-content>
