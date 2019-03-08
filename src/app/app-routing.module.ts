@@ -11,8 +11,7 @@ const routes: Routes = [
   { path: 'about', loadChildren: './about/about.module#AboutPageModule' },
   { path: 'menu', loadChildren: './menu/menu.module#MenuPageModule' },
   { path: 'contact', loadChildren: './contact/contact.module#ContactPageModule' },
-  { path: 'dishdetail/:id', loadChildren: './dishdetail/dishdetail.module#DishdetailPageModule' },
-  { path: 'contactus', loadChildren: './contactus/contactus.module#ContactusPageModule' }
+  { path: 'dishdetail/:id', loadChildren: './dishdetail/dishdetail.module#DishdetailPageModule' }
 ];
 
 @NgModule({
