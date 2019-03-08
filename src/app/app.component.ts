@@ -21,12 +21,12 @@ export class AppComponent {
             icon: 'list-box'
         },
         {
-            title: 'Contact Us',
+            title: 'Contact us',
             url: '/contact',
             icon: 'contact'
         },
         {
-            title: 'About Us',
+            title: 'About us',
             url: '/about',
             icon: 'information-circle'
         }
