@@ -14,6 +14,7 @@ import {PromotionService} from './services/promotion.service';
 import {ProcessHttpMessageService} from './services/process-http-message.service';
 import {HttpClientModule} from '@angular/common/http';
 import {baseURL} from './shared/baseurl';
+import { FavoriteService } from './services/favorite.service';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,7 @@ import {baseURL} from './shared/baseurl';
     LeaderService,
     PromotionService,
     ProcessHttpMessageService,
+    FavoriteService,
     {provide: 'BaseURL', useValue: baseURL } // Inyectamos el BaseURL
   ],
   bootstrap: [AppComponent]

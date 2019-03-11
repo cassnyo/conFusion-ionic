@@ -1,7 +1,8 @@
-import {Component, Inject, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {Dish} from '../shared/dish';
-import {DishService} from '../services/dish.service';
+import { Component, Inject, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { Dish } from '../shared/dish';
+import { DishService } from '../services/dish.service';
+import { FavoriteService } from '../services/favorite.service';
 
 @Component({
   selector: 'app-dishdetail',
@@ -14,9 +15,11 @@ export class DishdetailPage implements OnInit {
   dishErrorMessage: string;
   commentsCount: number;
   averageStarts: string;
+  favorite: Boolean = false;
 
   constructor(
     private dishService: DishService,
+    private favoriteService: FavoriteService,
     private activatedRoute: ActivatedRoute,
     @Inject('BaseURL') public baseUrl: string
   ) {
@@ -34,6 +37,7 @@ export class DishdetailPage implements OnInit {
         this.dish = dish;
         this.commentsCount = this.dish.comments.length;
         this.averageStarts = this.calculateAverageStarts(this.dish).toFixed(2);
+        this.favorite = this.favoriteService.isFavorite(this.dish.id);
       },
       error => this.dishErrorMessage = error
     );
@@ -43,6 +47,11 @@ export class DishdetailPage implements OnInit {
     let totalStars = 0;
     dish.comments.forEach(comment => totalStars += comment.rating);
     return totalStars / dish.comments.length;
+  }
+
+  addToFavorites(dishId: number) {
+    console.log(`Adding to favorites ${this.dish.id}`);
+    this.favorite = this.favoriteService.addFavorite(dishId);
   }
 
 }

@@ -11,7 +11,7 @@
 
   <!-- details -->
   <ion-card *ngIf="dish">
-    <img src="{{baseUrl + dish.image}}"/>
+    <img src="{{baseUrl + dish.image}}" />
     <ion-card-content>
       <ion-card-title>{{ dish.name }}</ion-card-title>
       <p>{{ dish.description }}</p>
@@ -60,5 +60,19 @@
     <h2>Error</h2>
     <h4>{{ dishErrorMessage }}</h4>
   </div>
+
+  <!-- favorite fab -->
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" [hidden]="favorite">
+    <ion-fab-button (click)="addToFavorites(dish.id)">
+      <ion-icon name="heart-empty"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+
+  <!-- favorite fab -->
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" *ngIf="favorite">
+    <ion-fab-button>
+      <ion-icon name="heart"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 
 </ion-content>
