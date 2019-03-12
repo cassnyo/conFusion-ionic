@@ -50,7 +50,7 @@ export class DishdetailPage implements OnInit {
   }
 
   addToFavorites(dishId: number) {
-    console.log(`Adding to favorites ${this.dish.id}`);
+    console.log(`Adding to favorites ${dishId}`);
     this.favorite = this.favoriteService.addFavorite(dishId);
   }
 

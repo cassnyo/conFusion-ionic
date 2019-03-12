@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>My favorites</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div *ngIf="favoriteDishes">
+    <ion-list>
+      <ion-item-sliding *ngFor="let favoriteDish of favoriteDishes" #item>
+        <!-- item view -->
+        <ion-item>
+          <ion-thumbnail slot="start">
+            <img src="{{baseUrl + favoriteDish.image}}" /> 
+          </ion-thumbnail>
+          <ion-label>
+            <h3>{{ favoriteDish.name }}</h3>
+            <p>{{ favoriteDish.description }}</p>
+          </ion-label>
+        </ion-item>
+
+        <!-- sliding options -->
+        <ion-item-options side="end">
+          <ion-item-option color="danger" (click)="deleteFavorite(item, favoriteDish.id)">
+            <ion-icon name="trash"></ion-icon>
+          </ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </div>
+
+  <!-- loading -->
+  <div [hidden]="favoriteDishes || favoriteDishesErrorMessage">
+    <ion-spinner></ion-spinner>
+    <h4>Loading... Please wait</h4>
+  </div>
+
+  <!-- error -->
+  <div *ngIf="favoriteDishesErrorMessage">
+    <h2>Error</h2>
+    <h4>{{ favoriteDishesErrorMessage }}</h4>
+  </div>
+
+
+</ion-content>

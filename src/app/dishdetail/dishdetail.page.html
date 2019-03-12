@@ -62,7 +62,7 @@
   </div>
 
   <!-- favorite fab -->
-  <ion-fab horizontal="end" vertical="bottom" slot="fixed" [hidden]="favorite">
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" *ngIf="dish" [hidden]="favorite">
     <ion-fab-button (click)="addToFavorites(dish.id)">
       <ion-icon name="heart-empty"></ion-icon>
     </ion-fab-button>

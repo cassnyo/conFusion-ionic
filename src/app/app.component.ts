@@ -21,6 +21,11 @@ export class AppComponent {
             icon: 'list-box'
         },
         {
+            title: 'My favorites',
+            url: '/favorites',
+            icon: 'heart'
+        },
+        {
             title: 'Contact us',
             url: '/contact',
             icon: 'contact'

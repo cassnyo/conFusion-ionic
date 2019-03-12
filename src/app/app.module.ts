@@ -16,6 +16,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {baseURL} from './shared/baseurl';
 import { FavoriteService } from './services/favorite.service';
 
+import 'hammerjs';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
