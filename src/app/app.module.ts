@@ -17,15 +17,20 @@ import {baseURL} from './shared/baseurl';
 import { FavoriteService } from './services/favorite.service';
 
 import 'hammerjs';
+import { ReservationPage } from './reservation/reservation.page';
+import { ReservationPageModule } from './reservation/reservation.module';
 
 @NgModule({
   declarations: [AppComponent],
-  entryComponents: [],
+  entryComponents: [
+    ReservationPage
+  ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReservationPageModule
   ],
   providers: [
     StatusBar,

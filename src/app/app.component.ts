@@ -1,8 +1,11 @@
 import {Component} from '@angular/core';
 
-import {Platform} from '@ionic/angular';
+import {Platform, ModalController} from '@ionic/angular';
 import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
+import { ReservationPage } from './reservation/reservation.page';
+import { Router } from '@angular/router';
+import { routerNgProbeToken } from '@angular/router/src/router_module';
 
 @Component({
     selector: 'app-root',
@@ -40,7 +43,9 @@ export class AppComponent {
     constructor(
         private platform: Platform,
         private splashScreen: SplashScreen,
-        private statusBar: StatusBar
+        private statusBar: StatusBar,
+        private router: Router,
+        private modalController: ModalController
     ) {
         this.initializeApp();
     }
@@ -51,4 +56,14 @@ export class AppComponent {
             this.splashScreen.hide();
         });
     }
+
+    openReserveModal() {
+        this.modalController.create({
+            component: ReservationPage
+        })
+        .then(modal => {
+            modal.present();
+        });
+    }
+
 }
