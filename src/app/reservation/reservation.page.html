@@ -1,15 +1,45 @@
 <ion-header>
   <ion-toolbar color="light">
-    <ion-title>Reserve table</ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="dismiss()">
         <ion-text *ngIf="currentPlatform === 'ios'" dacolor="primary">Cancel</ion-text>
         <ion-icon *ngIf="currentPlatform === 'android' || currentPlatform === 'dom'" name="md-close"></ion-icon>
       </ion-button>
     </ion-buttons>
+    <ion-title>Reserve table</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+
+  <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+    <!-- guests -->
+    <ion-item>
+      <ion-label>No. of guests</ion-label>
+      <ion-select formControlName="guests">
+        <ion-select-option value=1>1</ion-select-option>
+        <ion-select-option value=2>2</ion-select-option>
+        <ion-select-option value=3>3</ion-select-option>
+        <ion-select-option value=4>4</ion-select-option>
+        <ion-select-option value=5>5</ion-select-option>
+        <ion-select-option value=6>6</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <!-- smoking? -->
+    <ion-item>
+      <ion-label>Smoking?</ion-label>
+      <ion-toggle formControlName="smoking"></ion-toggle>
+    </ion-item>
+
+    <!-- date and time -->
+    <ion-item>
+      <ion-label>Date and time</ion-label>
+      <ion-datetime formControlName="dateTime" display-format="MMM DD, YYYY hh:mm A" picker-format="MMM DD, YYYY hh:mm A"></ion-datetime>
+    </ion-item>
+
+    <!-- submit button -->
+    <ion-button type="submit" [disabled]="!reservationForm.valid">Reserve</ion-button>
+  </form>
 
 </ion-content>
