@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
 import { FavoriteService } from '../services/favorite.service';
-import { ToastController } from '@ionic/angular';
+import { ToastController, ActionSheetController } from '@ionic/angular';
 
 @Component({
   selector: 'app-dishdetail',
@@ -23,6 +23,7 @@ export class DishdetailPage implements OnInit {
     private favoriteService: FavoriteService,
     private activatedRoute: ActivatedRoute,
     private toastController: ToastController,
+    private actionSheetController: ActionSheetController,
     @Inject('BaseURL') public baseUrl: string
   ) {
   }
@@ -64,6 +65,36 @@ export class DishdetailPage implements OnInit {
       position: 'middle'
     });
     toastController.present();
+  }
+
+  async presentActionSheet() {
+    const actionSheet = await this.actionSheetController.create({
+      header: 'Select action',
+      buttons: [
+        {
+          text: 'Add to favorites',
+          handler: () => this.addToFavorites(this.dish.id)
+        },
+        {
+          text: 'Add comment',
+          handler: () => this.openNewCommentModal()
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => console.log('Cancel clicked')
+        }
+      ]
+    });
+    await actionSheet.present();
+  }
+
+  openNewCommentModal() {
+    // TODO
+  }
+
+  onMoreClick() {
+    this.presentActionSheet();
   }
 
 }
