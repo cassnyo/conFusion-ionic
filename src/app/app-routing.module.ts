@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'contact', loadChildren: './contact/contact.module#ContactPageModule' },
   { path: 'dishdetail/:id', loadChildren: './dishdetail/dishdetail.module#DishdetailPageModule' },
   { path: 'favorites', loadChildren: './favorites/favorites.module#FavoritesPageModule' },
-  { path: 'reservation', loadChildren: './reservation/reservation.module#ReservationPageModule' }
+  { path: 'reservation', loadChildren: './reservation/reservation.module#ReservationPageModule' },
+  { path: 'comment', loadChildren: './comment/comment.module#CommentPageModule' }
 ];
 
 @NgModule({

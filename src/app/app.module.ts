@@ -19,18 +19,22 @@ import { FavoriteService } from './services/favorite.service';
 import 'hammerjs';
 import { ReservationPage } from './reservation/reservation.page';
 import { ReservationPageModule } from './reservation/reservation.module';
+import { CommentPage } from './comment/comment.page';
+import { CommentPageModule } from './comment/comment.module';
 
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [
-    ReservationPage
+    ReservationPage,
+    CommentPage
   ],
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    ReservationPageModule
+    ReservationPageModule,
+    CommentPageModule
   ],
   providers: [
     StatusBar,

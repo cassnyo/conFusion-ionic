@@ -3,7 +3,9 @@ import { ActivatedRoute } from '@angular/router';
 import { Dish } from '../shared/dish';
 import { DishService } from '../services/dish.service';
 import { FavoriteService } from '../services/favorite.service';
-import { ToastController, ActionSheetController } from '@ionic/angular';
+import { ToastController, ActionSheetController, ModalController } from '@ionic/angular';
+import { CommentPage } from '../comment/comment.page';
+import { Comment } from '../shared/comment';
 
 @Component({
   selector: 'app-dishdetail',
@@ -24,6 +26,7 @@ export class DishdetailPage implements OnInit {
     private activatedRoute: ActivatedRoute,
     private toastController: ToastController,
     private actionSheetController: ActionSheetController,
+    private modalController: ModalController,
     @Inject('BaseURL') public baseUrl: string
   ) {
   }
@@ -58,6 +61,11 @@ export class DishdetailPage implements OnInit {
     this.presentToast(`Dish ${dishId} added as a favorite succesfully`);
   }
 
+  addNewComment(comment: Comment) {
+    console.log(`Saving new comment`);
+    this.dish.comments.push(comment);
+  }
+
   async presentToast(message: string) {
     const toastController = await this.toastController.create({
       message: message,
@@ -89,8 +97,16 @@ export class DishdetailPage implements OnInit {
     await actionSheet.present();
   }
 
-  openNewCommentModal() {
-    // TODO
+  async openNewCommentModal() {
+    const commentModal = await this.modalController.create({
+      component: CommentPage
+    });
+    await commentModal.present();
+    const result = await commentModal.onDidDismiss();
+
+    if (result.data) {
+      this.addNewComment(result.data.newComment);
+    }
   }
 
   onMoreClick() {

@@ -15,7 +15,7 @@ export class ReservationPage implements OnInit {
   constructor(
     private platform: Platform,
     private modalController: ModalController,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) {
     this.createReservationForm();
   }
