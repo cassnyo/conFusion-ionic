@@ -37,8 +37,6 @@ export class FavoritesPage implements OnInit {
   async deleteFavorite(item: IonItemSliding, id: number) {
     const wantToDelete = await this.presentAlert(id);
 
-    console.log(`Want to delete ${wantToDelete}`);
-
     if (wantToDelete) {
       const loading = await this.presentLoading();
 
@@ -53,8 +51,8 @@ export class FavoritesPage implements OnInit {
           loading.dismiss();
         }
       );
-      item.close();
     }
+    item.close();
   }
 
   async presentToast(message: string) {
