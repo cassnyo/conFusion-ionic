@@ -7,7 +7,15 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
-        <ion-list>
+        <ion-list class="side-nav-list">
+          <!-- header -->
+          <ion-list-header class="side-nav-header" padding>
+            <img src="assets/images/logo.png" class="side-nav-header-thumbnail">
+            <ion-label>Ristorante Con Fusion</ion-label>
+            <!-- <ion-label color="light">Ristorante Con Fusion</ion-label> -->
+          </ion-list-header>
+
+          <!-- items -->
           <ion-menu-toggle auto-hide="false" *ngFor="let page of appPages">
             <ion-item [routerDirection]="'root'" [routerLink]="[page.url]">
               <ion-icon slot="start" [name]="page.icon"></ion-icon>
