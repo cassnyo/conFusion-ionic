@@ -14,7 +14,8 @@ const routes: Routes = [
   { path: 'dishdetail/:id', loadChildren: './dishdetail/dishdetail.module#DishdetailPageModule' },
   { path: 'favorites', loadChildren: './favorites/favorites.module#FavoritesPageModule' },
   { path: 'reservation', loadChildren: './reservation/reservation.module#ReservationPageModule' },
-  { path: 'comment', loadChildren: './comment/comment.module#CommentPageModule' }
+  { path: 'comment', loadChildren: './comment/comment.module#CommentPageModule' },
+  { path: 'login', loadChildren: './login/login.module#LoginPageModule' }
 ];
 
 @NgModule({

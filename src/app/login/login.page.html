@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="end">
+      <ion-button (click)="dismiss()">
+        <ion-text *ngIf="currentPlatform === 'ios'" dacolor="primary">Cancel</ion-text>
+        <ion-icon *ngIf="currentPlatform === 'android' || currentPlatform === 'dom'" name="md-close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <form novalidate [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <!--  username -->
+    <ion-item>
+      <ion-label position="floating">Username</ion-label>
+      <ion-input formControlName="username" type="text"></ion-input>
+    </ion-item>
+
+    <!-- password -->
+    <ion-item>
+      <ion-label position="floating">Password</ion-label>
+      <ion-input formControlName="password" type="password"></ion-input>
+    </ion-item>
+
+    <!-- remember -->
+    <ion-item>
+      <ion-label>Remember me</ion-label>
+      <ion-checkbox formControlName="remember" slot="start" color="primary"></ion-checkbox>
+    </ion-item>
+
+    <!-- submit button -->
+    <ion-button type="submit" [disabled]="!loginForm.valid">Login</ion-button>
+  </form>
+
+</ion-content>

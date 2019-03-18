@@ -5,7 +5,7 @@ import {SplashScreen} from '@ionic-native/splash-screen/ngx';
 import {StatusBar} from '@ionic-native/status-bar/ngx';
 import { ReservationPage } from './reservation/reservation.page';
 import { Router } from '@angular/router';
-import { routerNgProbeToken } from '@angular/router/src/router_module';
+import { LoginPage } from './login/login.page';
 
 @Component({
     selector: 'app-root',
@@ -44,7 +44,6 @@ export class AppComponent {
         private platform: Platform,
         private splashScreen: SplashScreen,
         private statusBar: StatusBar,
-        private router: Router,
         private modalController: ModalController
     ) {
         this.initializeApp();
@@ -57,13 +56,18 @@ export class AppComponent {
         });
     }
 
-    openReserveModal() {
-        this.modalController.create({
+    async presentReserveModal() {
+        const reserveModal = await this.modalController.create({
             component: ReservationPage
-        })
-        .then(modal => {
-            modal.present();
         });
+        await reserveModal.present();
+    }
+
+    async presentLoginModal() {
+        const loginModal = await this.modalController.create({
+            component: LoginPage
+        });
+        await loginModal.present();
     }
 
 }

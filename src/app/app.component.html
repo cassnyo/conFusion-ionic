@@ -7,6 +7,7 @@
         </ion-toolbar>
       </ion-header>
       <ion-content>
+
         <ion-list class="side-nav-list">
           <!-- header -->
           <ion-list-header class="side-nav-header" padding>
@@ -14,6 +15,16 @@
             <ion-label>Ristorante Con Fusion</ion-label>
             <!-- <ion-label color="light">Ristorante Con Fusion</ion-label> -->
           </ion-list-header>
+
+          <ion-menu-toggle autho-hide="false">
+            <!-- empty routerLink to show the '>' icon on iOs-->
+            <ion-item [routerLink]="" (click)="presentLoginModal()">
+              <ion-icon slot="start" name="log-in"></ion-icon>
+              <ion-label>
+                Login
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
 
           <!-- items -->
           <ion-menu-toggle auto-hide="false" *ngFor="let page of appPages">
@@ -24,17 +35,19 @@
               </ion-label>
             </ion-item>
           </ion-menu-toggle>
-        </ion-list>
 
-        <!-- create an 'fake' menu item to show a modal when click -->
-        <ion-menu-toggle auto-hide="false">
-          <ion-item (click)="openReserveModal()">
-            <ion-icon slot="start" name="restaurant"></ion-icon>
-            <ion-label>
-              Reserve table
-            </ion-label>
-          </ion-item>
-        </ion-menu-toggle>
+          <!-- create an 'fake' menu item to show a modal when click -->
+          <ion-menu-toggle auto-hide="false">
+            <!-- empty routerLink to show the '>' icon on iOs-->
+            <ion-item [routerLink]="" (click)="presentReserveModal()">
+              <ion-icon slot="start" name="restaurant"></ion-icon>
+              <ion-label>
+                Reserve table
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+
+        </ion-list>
 
       </ion-content>
     </ion-menu>
