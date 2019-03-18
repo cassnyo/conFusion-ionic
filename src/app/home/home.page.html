@@ -11,62 +11,74 @@
 
 <ion-content>
 
-  <!-- featured dish -->
-  <ion-card *ngIf="featuredDish">
-    <img src="{{baseUrl + featuredDish.image}}"/>
-    <ion-card-content>
-      <ion-card-title>{{ featuredDish.name }}</ion-card-title>
-      <p>{{ featuredDish.description }}</p>
-    </ion-card-content>
-  </ion-card>
-  <!-- loading -->
-  <div [hidden]="featuredDish || featuredDishErrorMessage">
-    <ion-spinner></ion-spinner>
-    <h4>Loading... Please wait</h4>
-  </div>
-  <!-- error -->
-  <div *ngIf="featuredDishErrorMessage">
-    <h2>Error</h2>
-    <h4>{{featuredDishErrorMessage}}</h4>
-  </div>
+  <!-- featured dish + promotion + leader -->
+  <ion-grid>
+    <!-- featured dish -->
+    <ion-row>
+      <!-- default: 12 cols, >=lg: 4 cols -->
+      <ion-col size="12" sizeLg="4">
+        <ion-card *ngIf="featuredDish">
+          <img src="{{baseUrl + featuredDish.image}}" />
+          <ion-card-content>
+            <ion-card-title>{{ featuredDish.name }}</ion-card-title>
+            <p>{{ featuredDish.description }}</p>
+          </ion-card-content>
+        </ion-card>
+        <!-- loading -->
+        <div [hidden]="featuredDish || featuredDishErrorMessage">
+          <ion-spinner></ion-spinner>
+          <h4>Loading... Please wait</h4>
+        </div>
+        <!-- error -->
+        <div *ngIf="featuredDishErrorMessage">
+          <h2>Error</h2>
+          <h4>{{featuredDishErrorMessage}}</h4>
+        </div>
+      </ion-col>
 
-  <!-- featured promotion -->
-  <ion-card *ngIf="featuredPromotion">
-    <img src="{{baseUrl + featuredPromotion.image}}"/>
-    <ion-card-content>
-      <ion-card-title>{{ featuredPromotion.name }}</ion-card-title>
-      <p>{{ featuredPromotion.description }}</p>
-    </ion-card-content>
-  </ion-card>
-  <!-- loading -->
-  <div [hidden]="featuredPromotion || featuredPromotionErrorMessage">
-    <ion-spinner></ion-spinner>
-    <h4>Loading... Please wait</h4>
-  </div>
-  <!-- error -->
-  <div *ngIf="featuredPromotionErrorMessage">
-    <h2>Error</h2>
-    <h4>{{featuredPromotionErrorMessage}}</h4>
-  </div>
+      <!-- featured promotion -->
+      <ion-col size="12" sizeLg="4">
+        <ion-card *ngIf="featuredPromotion">
+          <img src="{{baseUrl + featuredPromotion.image}}" />
+          <ion-card-content>
+            <ion-card-title>{{ featuredPromotion.name }}</ion-card-title>
+            <p>{{ featuredPromotion.description }}</p>
+          </ion-card-content>
+        </ion-card>
+        <!-- loading -->
+        <div [hidden]="featuredPromotion || featuredPromotionErrorMessage">
+          <ion-spinner></ion-spinner>
+          <h4>Loading... Please wait</h4>
+        </div>
+        <!-- error -->
+        <div *ngIf="featuredPromotionErrorMessage">
+          <h2>Error</h2>
+          <h4>{{featuredPromotionErrorMessage}}</h4>
+        </div>
+      </ion-col>
 
-  <!-- featured leader -->
-  <ion-card *ngIf="featuredLeader">
-    <img src="{{baseUrl + featuredLeader.image}}"/>
-    <ion-card-content>
-      <ion-card-title>{{ featuredLeader.name }}</ion-card-title>
-      <p>{{ featuredLeader.description }}</p>
-    </ion-card-content>
-  </ion-card>
-  <!-- loading -->
-  <div [hidden]="featuredLeader || featuredLeaderErrorMessage">
-    <ion-spinner></ion-spinner>
-    <h4>Loading... Please wait</h4>
-  </div>
-  <!-- error -->
-  <div *ngIf="featuredLeaderErrorMessage">
-    <h2>Error</h2>
-    <h4>{{featuredLeaderErrorMessage}}</h4>
-  </div>
+      <!-- featured leader -->
+      <ion-col size="12" sizeLg="4">
+        <ion-card *ngIf="featuredLeader">
+          <img src="{{baseUrl + featuredLeader.image}}" />
+          <ion-card-content>
+            <ion-card-title>{{ featuredLeader.name }}</ion-card-title>
+            <p>{{ featuredLeader.description }}</p>
+          </ion-card-content>
+        </ion-card>
+        <!-- loading -->
+        <div [hidden]="featuredLeader || featuredLeaderErrorMessage">
+          <ion-spinner></ion-spinner>
+          <h4>Loading... Please wait</h4>
+        </div>
+        <!-- error -->
+        <div *ngIf="featuredLeaderErrorMessage">
+          <h2>Error</h2>
+          <h4>{{featuredLeaderErrorMessage}}</h4>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <ion-fab horizontal="end" vertical="bottom" slot="fixed">
     <ion-fab-button color="tertiary">
@@ -74,12 +86,24 @@
     </ion-fab-button>
 
     <ion-fab-list side="top">
-      <ion-fab-button class="btn-mail"><ion-icon name="mail"></ion-icon></ion-fab-button>
-      <ion-fab-button class="btn-google-plus"><ion-icon color="white" name="logo-googleplus"></ion-icon></ion-fab-button>
-      <ion-fab-button class="btn-youtube"><ion-icon name="logo-youtube"></ion-icon></ion-fab-button>
-      <ion-fab-button class="btn-twitter"><ion-icon name="logo-twitter"></ion-icon></ion-fab-button>
-      <ion-fab-button class="btn-facebook"><ion-icon name="logo-facebook"></ion-icon></ion-fab-button>
-      <ion-fab-button class="btn-linkedin"><ion-icon name="logo-linkedin"></ion-icon></ion-fab-button>
+      <ion-fab-button class="btn-mail">
+        <ion-icon name="mail"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button class="btn-google-plus">
+        <ion-icon color="white" name="logo-googleplus"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button class="btn-youtube">
+        <ion-icon name="logo-youtube"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button class="btn-twitter">
+        <ion-icon name="logo-twitter"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button class="btn-facebook">
+        <ion-icon name="logo-facebook"></ion-icon>
+      </ion-fab-button>
+      <ion-fab-button class="btn-linkedin">
+        <ion-icon name="logo-linkedin"></ion-icon>
+      </ion-fab-button>
     </ion-fab-list>
 
   </ion-fab>

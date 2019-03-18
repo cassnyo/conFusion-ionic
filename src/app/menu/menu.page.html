@@ -9,14 +9,18 @@
 
 <ion-content class="card-background-image">
 
-  <!-- list -->
-  <div *ngIf="dishes">
-    <ion-card *ngFor="let dish of dishes" [routerLink]="['/dishdetail', dish.id]" (press)="addToFavorites(dish.id)">
-      <img src="{{baseUrl + dish.image}}" />
-      <div class="card-title">{{ dish.name }}</div>
-      <div class="card-subtitle">{{ dish.description }}</div>
-    </ion-card>
-  </div>
+  <ion-grid *ngIf="dishes">
+    <ion-row>
+      <!-- list -->
+      <ion-col size="12" sizeLg="4"  *ngFor="let dish of dishes">
+        <ion-card [routerLink]="['/dishdetail', dish.id]" (press)="addToFavorites(dish.id)">
+          <img src="{{baseUrl + dish.image}}" />
+          <div class="card-title">{{ dish.name }}</div>
+          <div class="card-subtitle">{{ dish.description }}</div>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 
   <!-- loading -->
   <div [hidden]="dishes || dishesErrorMessage">
